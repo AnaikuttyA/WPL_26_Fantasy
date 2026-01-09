@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Fantasy Auction Dashboard</title>
+
+<style>
+body {
+  font-family: Arial;
+  background:#f4f6f8;
+  padding:20px;
+}
+
+h1 { margin-bottom: 6px; }
+
+.summary {
+  background: white;
+  padding: 12px;
+  margin-bottom: 20px;
+  border-left: 6px solid #111;
+  font-size: 16px;
+}
+
+/* ===== TABLE BASE ===== */
+table {
+  width:100%;
+  border-collapse:collapse;
+  background:white;
+}
+
+th, td {
+  border:1px solid #ccc;
+  padding:4px;
+  text-align:center;
+  height:32px;
+  white-space: nowrap;
+}
+
+/* ===== STICKY HEADER ===== */
+th {
+  background:#111;
+  color:white;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+/* ===== FILTER INPUTS ===== */
+input {
+  padding:6px;
+  margin:4px;
+  width:220px;
+}
+
+/* ===== SCROLL CONTAINER ===== */
+.table-container {
+  overflow-x: auto;
+  overflow-y: auto;
+  max-height: 800px; /* ~25 rows */
+  border: 1px solid #ccc;
+}
+
+/* ===== STICKY PLAYER COLUMN ===== */
+.sticky-player {
+  position: sticky;
+  left: 0;
+  background: white;
+  z-index: 3;
+  font-weight: bold;
+}
+
+th.sticky-player {
+  background: #000;
+  z-index: 4;
+}
+</style>
+</head>
+
+<body>
+
+<h1>🏏 Fantasy Auction Dashboard</h1>
+
+<div class="summary">
+  <strong>Matches Completed:</strong> {{MATCHES_COMPLETED}}
+</div>
+
+<h2>Team Rankings</h2>
+<table>
+<thead>
+<tr>
+  <th>Rank</th>
+  <th>Team</th>
+  <th>Points</th>
+</tr>
+</thead>
+<tbody id="rankBody"></tbody>
+</table>
+
+<h2>Player Match-wise Points</h2>
+
+<input id="matchFilter" placeholder="Filter Match ID">
+<input id="playerFilter" placeholder="Filter Player">
+<input id="teamFilter" placeholder="Filter Auction Team">
+
+<div class="table-container">
+<table>
+  <thead id="pointsHead"></thead>
+  <tbody id="pointsBody"></tbody>
+</table>
+</div>
+
+<script>
+/* ===== DATA (INJECTED BY PYTHON) ===== */
+const rankData = {{RANK_DATA}};
+const pointsData = {{POINTS_DATA}};
+
+/* ===== RANK TABLE ===== */
+rankBody.innerHTML = rankData.map(r =>
+  `<tr>
+    <td>${r.rank}</td>
+    <td>${r.teams}</td>
+    <td>${r.points}</td>
+  </tr>`
+).join("");
+
+/* ===== BUILD POINTS TABLE (FIXED COLUMN ORDER) ===== */
+function buildPointsTable(data){
+  if(data.length === 0){
+    pointsHead.innerHTML = "";
+    pointsBody.innerHTML = "<tr><td>No data</td></tr>";
+    return;
+  }
+
+  const fixedCols = ["match_id", "player", "auction_team", "total_points"];
+  const allCols = Object.keys(data[0]);
+
+  // remaining columns (excluding fixed ones)
+  const remainingCols = allCols.filter(c => !fixedCols.includes(c));
+
+  const finalCols = [...fixedCols, ...remainingCols];
+
+  /* ----- HEADER ----- */
+  pointsHead.innerHTML =
+    "<tr>" +
+    finalCols.map(c =>
+      c === "player"
+        ? `<th class="sticky-player">${c}</th>`
+        : `<th>${c}</th>`
+    ).join("") +
+    "</tr>";
+
+  /* ----- BODY ----- */
+  pointsBody.innerHTML = data.map(row =>
+    "<tr>" +
+    finalCols.map(c =>
+      c === "player"
+        ? `<td class="sticky-player">${row[c] ?? ""}</td>`
+        : `<td>${row[c] ?? ""}</td>`
+    ).join("") +
+    "</tr>"
+  ).join("");
+}
+
+/* ===== FILTER LOGIC ===== */
+function applyFilters(){
+  const m = matchFilter.value.toLowerCase();
+  const p = playerFilter.value.toLowerCase();
+  const t = teamFilter.value.toLowerCase();
+
+  buildPointsTable(
+    pointsData.filter(r =>
+      String(r.match_id).toLowerCase().includes(m) &&
+      String(r.player).toLowerCase().includes(p) &&
+      String(r.auction_team || "").toLowerCase().includes(t)
+    )
+  );
+}
+
+matchFilter.oninput = applyFilters;
+playerFilter.oninput = applyFilters;
+teamFilter.oninput = applyFilters;
+
+/* ===== INITIAL LOAD ===== */
+buildPointsTable(pointsData);
+</script>
+
+</body>
+</html>
