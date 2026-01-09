@@ -41,7 +41,10 @@ all_matches_df = pd.concat(dfs, ignore_index=True)
 
 df = all_matches_df.copy()
 
-df = df[df['season'].isin(['2024/25'])]
+if ('2025/26' in df['season'].unique()) or ('2026' in df['season'].unique()) or (2026 in df['season'].unique()):
+    df = df[df['season'].isin['2025/26','2026',2026]]
+else:
+    df = df[df['season'].isin(['2024/25'])]
 
 attackers = ['KE Bryce','H Deol','SD Bahadur', 'S Ishaque', 'SB Pokharkar', 'S Sajana', 'S Mandhana', 'MM Lanning', 'A King', 'CE Dean', 'Shafali Verma']
 bcc = ['AB Kaur', 'PP Bala', 'AC Jayangani', 'M Kapp', 'MS Kashyap', 'TN Pathan', 'PG Chopra', 'Simran Shaikh', 'Meghna Singh', 'KJ Garth', 'A Capsey']
