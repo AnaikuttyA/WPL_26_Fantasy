@@ -42,7 +42,7 @@ all_matches_df = pd.concat(dfs, ignore_index=True)
 df = all_matches_df.copy()
 
 if ('2025/26' in df['season'].unique()) or ('2026' in df['season'].unique()) or (2026 in df['season'].unique()):
-    df = df[df['season'].isin['2025/26','2026',2026]]
+    df = df[df['season'].isin(['2025/26','2026',2026])]
 else:
     df = df[df['season'].isin(['2024/25'])]
 
