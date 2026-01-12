@@ -120,7 +120,7 @@ def fantasy_points(df,total_points_df_download=0,rank_df_download=0):
                                                                                             4 if x>=25 else
                                                                                                 -2 if x==0 else 0))   
                                                                     ))
-    batting_df['batting_sr_points'] = batting_df.apply(lambda x : 0 if x['is_batter_ball']<=10 else
+    batting_df['batting_sr_points'] = batting_df.apply(lambda x : 0 if x['is_batter_ball']<10 else
                                                     6 if x['sr'] > 170 else 
                                                     4 if x['sr'] > 150 else
                                                     2 if x['sr'] > 130 else
@@ -143,7 +143,7 @@ def fantasy_points(df,total_points_df_download=0,rank_df_download=0):
 
     # Economy, Wkt points, dot points, economy points
     bowling_df['economy'] = round(bowling_df['is_bowler_runs']/bowling_df['is_ball'] *6, 2)
-    bowling_df['bowling_wkt_points'] = bowling_df['is_bowl_out'] * 30
+    bowling_df['bowling_wkt_points'] = bowling_df['is_bowl_out'] * 35
     bowling_df['bowling_dot_points'] = bowling_df['isdot']
     bowling_df['bowling_economy_points'] = bowling_df.apply(lambda x: 0 if x['is_ball']<12 else
                                                             6 if x['economy'] < 5 else
