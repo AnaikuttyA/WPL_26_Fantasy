@@ -149,9 +149,9 @@ def fantasy_points(df,total_points_df_download=0,rank_df_download=0):
                                                             6 if x['economy'] < 5 else
                                                             4 if x['economy'] < 6 else
                                                             2 if x['economy'] < 7 else
-                                                            -2 if x['economy'] > 12 else
+                                                            -6 if x['economy'] > 12 else
                                                             -4 if x['economy'] > 11 else
-                                                            -6 if x['economy'] > 10 else 0, axis=1)
+                                                            -2 if x['economy'] > 10 else 0, axis=1)
     bowling_df['bowling_wkt_bonus'] = bowling_df['is_bowl_out'].apply(lambda x: 12 if x >= 5 else
                                                                     8 if x >= 4 else
                                                                     4 if x >= 3 else 0)
