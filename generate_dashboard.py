@@ -209,7 +209,7 @@ def fantasy_points(df,total_points_df_download=0,rank_df_download=0):
     rank_df = pd.DataFrame({'teams': final_team_names[:10],
                         'points': final_team_points[:10]})
 
-    rank_df['rank'] = rank_df['points'].rank(ascending=False)
+    rank_df['rank'] = rank_df['points'].rank(ascending=False, method='min')
 
 
     ########################
