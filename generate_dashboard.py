@@ -16,7 +16,7 @@ import zipfile
 import io
 
 # Cricsheet IPL CSV ZIP
-url = "https://cricsheet.org/downloads/wpl_female_csv2.zip"
+url = "https://cricsheet.org/downloads/t20s_male_csv2.zip"
 
 # Download ZIP into memory
 response = requests.get(url)
@@ -41,33 +41,56 @@ all_matches_df = pd.concat(dfs, ignore_index=True)
 
 df = all_matches_df.copy()
 
-if ('2025/26' in df['season'].unique()) or ('2026' in df['season'].unique()) or (2026 in df['season'].unique()):
-    df = df[df['season'].isin(['2025/26','2026',2026])]
-else:
-    df = df[df['season'].isin(['2024/25'])]
+start_date = '2026-02-03' #yyyy-mm-dd
+end_date = '2026-03-08' #yyyy-mm-dd
 
-attackers = ['KE Bryce','H Deol','SD Bahadur', 'S Ishaque', 'SB Pokharkar', 'S Sajana', 'S Mandhana', 'MM Lanning', 'A King', 'CE Dean', 'Shafali Verma']
-bcc = ['AB Kaur', 'PP Bala', 'AC Jayangani', 'M Kapp', 'MS Kashyap', 'TN Pathan', 'PG Chopra', 'Simran Shaikh', 'Meghna Singh', 'KJ Garth', 'A Capsey']
-blazing_titans = ['A Sutherland', 'BL Mooney', 'LMM Tahuhu', 'TR Sadhu', 'IECM Wong', 'GM Harris', 'SJ Bryce', 'BS Fulmali', 'Komal Zanzad', 'CA Henry', 'K Goud']
-eleven_stars = ['A Reddy', 'G Voll', 'TM McGrath', 'Ashwani Kumari', 'N de Klerk', 'JN Kalita', 'SIR Dunkley', 'S Meghana', 'S Rana', 'DB Sharma', 'VJ Joshitha']
-kingslayers =['DJS Dottin', 'RP Yadav', 'NS Prasad', 'H Kaur', 'HK Matthews', 'JI Rodrigues', 'AC Kerr', 'EA Perry', 'Raghvi Bist', 'S Sehrawat', 'KS Gautam']
-super_kings =['TP Kanwar', 'DP Vaidya', 'S Ecclestone', 'NR Sciver-Brunt', 'SB Keerthana', 'DV Gujjar', 'HY Kazi', 'M Joshi', 'E Bisht', 'S Molineux', 'SV Yashasri']
-knights = ['DR Gibson', 'N Shree Charani', 'KS Ahuja', 'L Wolvaardt', 'PS Sisodia', 'RS Gayakwad', 'D Vrinda', 'S Gupta', 'SS Pawar', 'V Krishnamurthy', 'JL Jonassen']
-thalasons = ['SFM Devine', 'P Litchfield', 'S Pandey', 'M Mani', 'YH Bhatia', 'SG Satghare', 'K Anjali Sarvani', 'S Ismail', 'KP Navgire', 'SZ Thakor', 'TG Norris']
-troublemaker_kings =['ML Schutt', 'S Verma', 'S Asha', 'T Bhatia', 'RM Ghosh', 'P Rawat', 'G Wareham', 'Poonam Yadav', 'DD Kasat', 'G Kamalini', 'H Graham']
-vsk = ['EA Burns', 'DN Wyatt', 'G Sultana', 'D Hemalatha', 'Priya Mishra', 'U Chetry', 'HC Knight', 'AJ Healy', 'A Gardner', 'PN Khemnar', 'P Vastrakar']
+df['start_date'] = pd.to_datetime(df['start_date'])
 
+df = df[(df['start_date'] >= pd.to_datetime(start_date))& (df['start_date'] <= pd.to_datetime(end_date))]
+
+#################################
+
+# if ('2025/26' in df['season'].unique()) or ('2026' in df['season'].unique()) or (2026 in df['season'].unique()):
+#     df = df[df['season'].isin(['2025/26','2026',2026])]
+# else:
+#     df = df[df['season'].isin(['2024/25'])
+
+
+#################################
+
+
+######### Team List Starts ############
+xi_strikers = ['MT Renshaw','BM Duckett','SA Yadav','Saim Ayub','GF Linde','PHKD Mendis','JC Buttler','Mohammad Nawaz','JO Holder','Abrar Ahmed','MJ Henry','BFW de Leede','Harmeet Singh'] #2 remaning
+
+thalasons = ['TM Head','RK Singh','MG Bracewell','PR Stirling','MD Shanaka','Sahibzada Farhan','AU Rashid','IS Sodhi','Abhishek Sharma','JA Duffy','JN Frylinck','Karan KC','JT Smuts']
+
+super_knights = ['Shaheen Shah Afridi','JC Archer','C Green','JP Inglis','RD Rickelton','T Banton','Q de Kock','P Nissanka','Fakhar Zaman','Naseem Shah','AR Patel','R Ravindra',
+                 'JJ Smit','AGS Gous','Waseem Muhammad']
+
+sonu_48 = ['DA Miller','JJ Bumrah','M Pathirana','HH Pandya','GJ Maxwell','BKG Mendis','JG Bethell','SM Curran','C Bosch','Rashid Khan','A Zampa','Jatinder Singh','Sompal Kami']  # all done
+
+rcb = ['Babar Azam', 'J Little', 'L Wood','RL Chase','S Dube','SD Hope','TH David','AK Markram','KA Maharaj','L Ngidi','NT Ellis','T Stubbs'] #3 associate ramining
+
+the_og_xi = ['D Brevis','MS Chapman','WG Jacks','M Jansen','J Charles','AJ Hosein','J Overton','JDS Neesham','CV Varun','PVD Chameera','Milind Kumar','MD Patel','SN Netravalkar'] #nabi missing
+
+eleven_stars = ['BA King','LH Ferguson','Tilak Varma','R Powell','MP Stoinis','SE Rutherford','PD Salt','G Motie','R Shepherd','XC Bartlett','E Malinga','MW Forde','BJ McMullen','MRJ Watt',] #one missing
+
+blazing_titans = ['HC Brook','K Rabada','Usman Tariq','GH Dockrell','MDK Perera', 'MDKJ Perera','TL Seifert','FA Allen','SO Hetmyer','Kuldeep Yadav','Arshdeep Singh','MR Marsh',
+                  'MJ Santner','DS Airee','SP Krishnamurthi','S Lamichhane'] # perera doubt
+
+attackers = ['BJ Dwarshuis','Agha Salman','DP Conway','Ishan Kishan','GD Phillips','DJ Mitchell','Sikandar Raza','Shadab Khan',"MP O'Dowd",'LV van Beek','Ali Khan'] #3 remainig
+
+######### Team List Enda ############
 
 all_teams = {'attackers':attackers,
-             'bcc':bcc,
              'blazing_titans':blazing_titans,
              'eleven_stars':eleven_stars,
-             'kingslayers':kingslayers,
-             'super_kings':super_kings,
-             'knights':knights,
              'thalasons':thalasons,
-             'troublemaker_kings':troublemaker_kings,
-             'vsk':vsk
+             'the_og_xi':the_og_xi,
+             'rcb':rcb,
+             'sonu_48':sonu_48,
+             'super_knights':super_knights,
+             'xi_strikers':xi_strikers
 }
 
 def fantasy_points(df,total_points_df_download=0,rank_df_download=0):
@@ -172,15 +195,15 @@ def fantasy_points(df,total_points_df_download=0,rank_df_download=0):
     total_points_df['total_points'] = total_points_df['total_batting_points'] + total_points_df['total_bowling_points']
 
     total_points_df['auction_team'] = total_points_df['player'].apply(lambda x: 'attackers' if x in attackers else
-                                                                      'bcc' if x in bcc else
                                                                       'blazing titans' if x in blazing_titans else
                                                                       'eleven_stars' if x in eleven_stars else
-                                                                      'kingslayers' if x in kingslayers else
-                                                                      'super kings' if x in super_kings else
-                                                                      'super knights' if x in knights else
-                                                                      'troublemaker_kings' if x in troublemaker_kings else
+                                                                      'the_og_xi' if x in the_og_xi else
+                                                                      'rcb' if x in rcb else
+                                                                      'sonu_48' if x in sonu_48 else
+                                                                      'super_knights' if x in super_knights else
+                                                                      'xi_strikers' if x in xi_strikers else
                                                                       'thalasons' if x in thalasons else
-                                                                      'vsk' if x in vsk else 
+                                                                      
                                                                       np.nan)
 
     ###########################
@@ -206,8 +229,8 @@ def fantasy_points(df,total_points_df_download=0,rank_df_download=0):
     final_team_points = list(final_team_points_dict.values()) # Storing Team Points In a List
 
     #ranking the points 
-    rank_df = pd.DataFrame({'teams': final_team_names[:10],
-                        'points': final_team_points[:10]})
+    rank_df = pd.DataFrame({'teams': final_team_names[:len(all_teams)],
+                        'points': final_team_points[:len(all_teams)]})
 
     rank_df['rank'] = rank_df['points'].rank(ascending=False, method='min')
 
