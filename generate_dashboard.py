@@ -41,7 +41,7 @@ all_matches_df = pd.concat(dfs, ignore_index=True)
 
 df = all_matches_df.copy()
 
-start_date = '2026-02-03' #yyyy-mm-dd
+start_date = '2026-02-07' #yyyy-mm-dd
 end_date = '2026-03-08' #yyyy-mm-dd
 
 df['start_date'] = pd.to_datetime(df['start_date'])
