@@ -67,7 +67,7 @@ thalasons = ['TM Head','RK Singh','MG Bracewell','PR Stirling','MD Shanaka','Sah
 super_knights = ['Shaheen Shah Afridi','JC Archer','C Green','JP Inglis','RD Rickelton','T Banton','Q de Kock','P Nissanka','Fakhar Zaman','Naseem Shah','AR Patel','R Ravindra',
                  'JJ Smit','AGS Gous','Waseem Muhammad']
 
-sonu_48 = ['DA Miller','JJ Bumrah','M Pathirana','HH Pandya','GJ Maxwell','BKG Mendis','JG Bethell','SM Curran','C Bosch','Rashid Khan','A Zampa','Jatinder Singh','Sompal Kami']  # all done
+sonu_48 = ['DA Miller','JJ Bumrah','M Pathirana','HH Pandya','GJ Maxwell','BKG Mendis','JG Bethell','SM Curran','C Bosch','Rashid Khan','A Zampa','Jatinder Singh','Sompal Kami','M Theekshana']  #George munsey missing 
 
 rcb = ['Babar Azam', 'J Little', 'L Wood','RL Chase','S Dube','SD Hope','TH David','AK Markram','KA Maharaj','L Ngidi','NT Ellis','T Stubbs'] #3 associate ramining
 
