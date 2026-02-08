@@ -100,6 +100,20 @@ def fantasy_points(df,total_points_df_download=0,rank_df_download=0):
 
     match_info.rename(columns={'batting_team':'team_1','bowling_team':'team_2'}, inplace=True)
 
+    #######################################################
+    
+    #######################################################
+
+    afg_match_info = pd.DataFrame({'match_id':[],
+                                   'team_1':[],
+                                   'team_2':[]})
+    
+    match_info = pd.concat([match_info,afg_match_info])
+    
+    #######################################################
+    
+    #######################################################
+
     #captain and Vice-Captain Boost
     boost_df = pd.DataFrame({'player':[],
                              'BOOST':[]})
@@ -241,6 +255,8 @@ def fantasy_points(df,total_points_df_download=0,rank_df_download=0):
                                                                       'thalasons' if x in thalasons else
                                                                       
                                                                       np.nan)
+    
+    total_points_df['match_id'] = int(total_points_df['match_id'])   #### Additional changes
 
     ###########################
     # Download total_points_df to get match by match player points
