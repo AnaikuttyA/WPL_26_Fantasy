@@ -60,9 +60,9 @@ df = df[(df['start_date'] >= pd.to_datetime(start_date))& (df['start_date'] <= p
 
 
 ######### Team List Starts ############
-xi_strikers = ['MT Renshaw','BM Duckett','SA Yadav','Saim Ayub','GF Linde','PHKD Mendis','JC Buttler','Mohammad Nawaz','JO Holder','Abrar Ahmed','MJ Henry','BFW de Leede','Harmeet Singh'] #2 remaning
+xi_strikers = ['MT Renshaw','BM Duckett','SA Yadav','Saim Ayub','GF Linde','PHKD Mendis','JC Buttler','Mohammad Nawaz','JO Holder','Abrar Ahmed','MJ Henry','BFW de Leede','Harmeet Singh','Noor Ahmad'] #2 remaning
 
-thalasons = ['TM Head','RK Singh','MG Bracewell','PR Stirling','MD Shanaka','Sahibzada Farhan','AU Rashid','IS Sodhi','Abhishek Sharma','JA Duffy','JN Frylinck','Karan KC','JT Smuts']
+thalasons = ['TM Head','RK Singh','MG Bracewell','PR Stirling','MD Shanaka','Sahibzada Farhan','AU Rashid','IS Sodhi','Abhishek Sharma','JA Duffy','JN Frylinck','Karan KC','JT Smuts','I Zadran']
 
 super_knights = ['Shaheen Shah Afridi','JC Archer','C Green','JP Inglis','RD Rickelton','T Banton','Q de Kock','P Nissanka','Fakhar Zaman','Naseem Shah','AR Patel','R Ravindra',
                  'JJ Smit','AGS Gous','Waseem Muhammad']
@@ -71,14 +71,14 @@ sonu_48 = ['DA Miller','JJ Bumrah','M Pathirana','HH Pandya','GJ Maxwell','BKG M
 
 rcb = ['Babar Azam', 'J Little', 'L Wood','RL Chase','S Dube','SD Hope','TH David','AK Markram','KA Maharaj','L Ngidi','NT Ellis','T Stubbs'] #3 associate ramining
 
-the_og_xi = ['D Brevis','MS Chapman','WG Jacks','M Jansen','J Charles','AJ Hosein','J Overton','JDS Neesham','CV Varun','PVD Chameera','Milind Kumar','MD Patel','SN Netravalkar'] #nabi missing
+the_og_xi = ['D Brevis','MS Chapman','WG Jacks','M Jansen','J Charles','AJ Hosein','J Overton','JDS Neesham','CV Varun','PVD Chameera','Milind Kumar','MD Patel','SN Netravalkar','M Nabi'] #nabi missing
 
 eleven_stars = ['BA King','LH Ferguson','Tilak Varma','R Powell','MP Stoinis','SE Rutherford','PD Salt','G Motie','R Shepherd','XC Bartlett','E Malinga','MW Forde','BJ McMullen','MRJ Watt','SS Ranjane'] #added 'ss ranjane'
 
 blazing_titans = ['HC Brook','K Rabada','Usman Tariq','GH Dockrell','MDK Perera', 'MDKJ Perera','TL Seifert','FA Allen','SO Hetmyer','Kuldeep Yadav','Arshdeep Singh','MR Marsh',
                   'MJ Santner','DS Airee','SP Krishnamurthi','S Lamichhane'] # perera doubt
 
-attackers = ['BJ Dwarshuis','Agha Salman','DP Conway','Ishan Kishan','GD Phillips','DJ Mitchell','Sikandar Raza','Shadab Khan',"MP O'Dowd",'LV van Beek','Ali Khan'] #3 remainig
+attackers = ['BJ Dwarshuis','Agha Salman','DP Conway','Ishan Kishan','GD Phillips','DJ Mitchell','Sikandar Raza','Shadab Khan',"MP O'Dowd",'LV van Beek','Ali Khan','S Atal','R Gurbaz','A Omarzai'] #3 remainig
 
 ######### Team List Enda ############
 
@@ -104,9 +104,9 @@ def fantasy_points(df,total_points_df_download=0,rank_df_download=0):
     
     #######################################################
 
-    afg_match_info = pd.DataFrame({'match_id':[],
-                                   'team_1':[],
-                                   'team_2':[]})
+    afg_match_info = pd.DataFrame({'match_id':[1],
+                                   'team_1':['Afghanisthan'],
+                                   'team_2':['New Zealand']})
     
     match_info = pd.concat([match_info,afg_match_info])
     
@@ -117,8 +117,8 @@ def fantasy_points(df,total_points_df_download=0,rank_df_download=0):
     #captain and Vice-Captain Boost
     boost_df = pd.DataFrame({'player':['SA Yadav','Abhishek Sharma','C Green','HH Pandya','AK Markram','D Brevis','Tilak Varma','MR Marsh','Ishan Kishan',
                                        'Saim Ayub','TM Head','Q de Kock','SM Curran','S Dube','CV Varun','MP Stoinis','FA Allen','GD Phillips'],
-                             'BOOST':[2,2,2,2,2,2,2,2,2,2,
-                                      1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5]})
+                             'BOOST':[2,2,2,2,2,2,2,2,2,
+                                      1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5]})
     boost_df['player'] = boost_df['player'].astype('str')
 
     #Featue Engineering
@@ -154,15 +154,18 @@ def fantasy_points(df,total_points_df_download=0,rank_df_download=0):
     #######################################
     #######################################
 
-    afg_batting_df = pd.DataFrame({'match_id':[],
-                               'striker':[],
-                               'runs_off_bat':[],
-                               'is_batter_ball':[],
-                               'is_batter_dot':[],
-                               'isfour':[],
-                               'issix':[]})
+    afg_nz_batting_df = pd.DataFrame({'match_id':[1,1,1,1,1,1,1,1,1,1,1,1],
+                               'striker':['R Gurbaz','S Atal','I Zadran','M Nabi','A Omarzai','MS Chapman','TL Seifert','FA Allen',
+                                          'GD Phillips','DJ Mitchell','R Ravindra','MJ Santner'], #'R Gurbaz','S Atal','I Zadran','M Nabi','A Omarzai'
+                               'runs_off_bat':  [27,29,10,10,14,28,65,1,42,25,0,17],
+                               'is_batter_ball':[22,24,12,7,7,17,42,2,25,14,1,8],
+                               'is_batter_dot':[np.nan,np.nan,np.nan,np.nan,np.nan,np.nan,np.nan,np.nan,np.nan,np.nan,np.nan,np.nan],
+                               'isfour':[2,2,1,0,0,2,7,0,7,1,0,2],
+                               'issix': [1,0,0,1,2,1,3,0,1,1,0,1]})
     
-    batting_df = pd.concat([batting_df,afg_batting_df])
+    print("----------------\n",afg_nz_batting_df,"\n--------------")
+    
+    batting_df = pd.concat([batting_df,afg_nz_batting_df])
 
     #########################################
     #########################################
@@ -203,15 +206,16 @@ def fantasy_points(df,total_points_df_download=0,rank_df_download=0):
     ####################################################
     ####################################################
 
-    afg_bowling_df = pd.DataFrame({'match_id':[],
-                               'bowler':[],
-                               'is_bowler_runs':[],
-                               'is_ball':[],
-                               'is_bowl_out':[],
-                               'isdot':[],
-                               'is_maiden':[]})
-    
-    bowling_df = pd.concat(bowling_df,afg_bowling_df)
+    afg_nz_bowling_df = pd.DataFrame({'match_id':[1,1,1,1,1,1,1,1,1,1],
+                               'bowler':['MJ Henry','JA Duffy','LH Ferguson','GD Phillips','JDS Neesham','R Ravindra','MJ Santner',
+                                         'M Nabi','Rashid Khan','A Omarzai'],
+                               'is_bowler_runs':[27,30,40,12,33,14,23,18,36,40],
+                               'is_ball':[24,18,24,6,18,6,24,6,24,23],
+                               'is_bowl_out':[1,1,2,0,0,1,0,1,1,1],
+                               'isdot':[9,8,5,0,3,2,6,21,5,7],
+                               'is_maiden':[0,0,0,0,0,0,0,0,0,0]})
+    print('-----------------------\n',afg_nz_bowling_df,'\n-------------------------')
+    bowling_df = pd.concat([bowling_df,afg_nz_bowling_df])
     
     ####################################################
     ####################################################
@@ -257,8 +261,6 @@ def fantasy_points(df,total_points_df_download=0,rank_df_download=0):
                                                                       'thalasons' if x in thalasons else
                                                                       
                                                                       np.nan)
-    
-    total_points_df['match_id'] = int(total_points_df['match_id'])   #### Additional changes
 
     ###########################
     # Download total_points_df to get match by match player points
