@@ -309,7 +309,7 @@ def fantasy_points(df,total_points_df_download=0,rank_df_download=0):
 
 
 rank_df, total_points_df = fantasy_points(df,total_points_df_download=0,rank_df_download=0)
-matches_completed = df['match_id'].nunique()
+matches_completed = total_points_df['match_id'].nunique()
 
 # =========================
 # BUILD HTML FROM TEMPLATE
