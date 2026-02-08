@@ -211,7 +211,7 @@ def fantasy_points(df,total_points_df_download=0,rank_df_download=0):
                                'isdot':[],
                                'is_maiden':[]})
     
-    bowling_df = pd.concat(bowling_df,afg_bowling_df)
+    bowling_df = pd.concat([bowling_df,afg_bowling_df])
     
     ####################################################
     ####################################################
