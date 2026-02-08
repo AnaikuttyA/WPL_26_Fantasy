@@ -133,6 +133,25 @@ def fantasy_points(df,total_points_df_download=0,rank_df_download=0):
     #Groupby Batting df
     batting_df = df.groupby(['match_id','striker']).agg({'runs_off_bat':'sum','is_batter_ball':'sum','is_batter_dot':'sum','isfour':'sum','issix':'sum'}).reset_index()
 
+
+    #######################################
+    #######################################
+    #######################################
+
+    afg_batting_df = pd.DataFrame({'match_id':[],
+                               'striker':[],
+                               'runs_off_bat':[],
+                               'is_batter_ball':[],
+                               'is_batter_dot':[],
+                               'isfour':[],
+                               'issix':[]})
+    
+    batting_df = pd.concat([batting_df,afg_batting_df])
+
+    #########################################
+    #########################################
+    #########################################
+
     # Bat SR, bat points, boundary points, run Bonus
     batting_df['sr'] = round(batting_df['runs_off_bat']/batting_df['is_batter_ball'] * 100,2)
     batting_df['batting_points'] = batting_df['runs_off_bat']
@@ -164,6 +183,23 @@ def fantasy_points(df,total_points_df_download=0,rank_df_download=0):
     # # Groupby Bowler df
     bowling_df = bowling_df.groupby(['match_id','bowler']).agg({'is_bowler_runs':'sum','is_ball':'sum','is_bowl_out':'sum','isdot':'sum','is_maiden':'sum'}).reset_index()
 
+    ####################################################
+    ####################################################
+    ####################################################
+
+    afg_bowling_df = pd.DataFrame({'match_id':[],
+                               'bowler':[],
+                               'is_bowler_runs':[],
+                               'is_ball':[],
+                               'is_bowl_out':[],
+                               'isdot':[],
+                               'is_maiden':[]})
+    
+    bowling_df = pd.concat(bowling_df,afg_bowling_df)
+    
+    ####################################################
+    ####################################################
+    ####################################################
     # Economy, Wkt points, dot points, economy points
     bowling_df['economy'] = round(bowling_df['is_bowler_runs']/bowling_df['is_ball'] *6, 2)
     bowling_df['bowling_wkt_points'] = bowling_df['is_bowl_out'] * 35
