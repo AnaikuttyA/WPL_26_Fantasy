@@ -117,8 +117,8 @@ def fantasy_points(df,total_points_df_download=0,rank_df_download=0):
     #captain and Vice-Captain Boost
     boost_df = pd.DataFrame({'player':['SA Yadav','Abhishek Sharma','C Green','HH Pandya','AK Markram','D Brevis','Tilak Varma','MR Marsh','Ishan Kishan',
                                        'Saim Ayub','TM Head','Q de Kock','SM Curran','S Dube','CV Varun','MP Stoinis','FA Allen','GD Phillips'],
-                             'BOOST':[2,2,2,2,2,2,2,2,2,2,
-                                      1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5]})
+                             'BOOST':[2,2,2,2,2,2,2,2,2,
+                                      1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5]})
     boost_df['player'] = boost_df['player'].astype('str')
 
     #Featue Engineering
