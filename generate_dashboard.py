@@ -258,7 +258,6 @@ def fantasy_points(df,total_points_df_download=0,rank_df_download=0):
                                                                       
                                                                       np.nan)
     
-    total_points_df['match_id'] = int(total_points_df['match_id'])   #### Additional changes
 
     ###########################
     # Download total_points_df to get match by match player points
