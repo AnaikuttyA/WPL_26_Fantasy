@@ -324,7 +324,11 @@ def fantasy_points(df,total_points_df_download=0,rank_df_download=0):
 
 
 rank_df, total_points_df = fantasy_points(df,total_points_df_download=0,rank_df_download=0)
-matches_completed = total_points_df['match_id'].nunique()
+matches_completed = total_points_df[(total_points_df['team_1'].isin[
+'Afghanisthan','Australia','Canada','New Zealand',
+'Netherlands','Pakistan','South Africa','West Indies','Scotland','India','United States of America','England','Nepal','Sri Lanka','Ireland','Oman','Zimbabwe','Namibia','United Arab Emirates','Italy'
+])|(total_points_df['team_2'].isin['Afghanisthan','Australia','Canada','New Zealand','Netherlands','Pakistan','South Africa','West Indies','Scotland','India','United States of America','England','Nepa','Sri Lanka','Ireland','Oman','Zimbabwe','Namibia','United Arab Emirates','Italy'
+]) ]['match_id].unique()
 
 # =========================
 # BUILD HTML FROM TEMPLATE
