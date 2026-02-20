@@ -171,26 +171,10 @@ def fantasy_points(df,total_points_df_download=0,rank_df_download=0):
                                          7,0,1,0,0,0,2,1,1,1,4,3,0,0]})
     
     print("----------------\n",afg_nz_batting_df,"\n--------------")
-#_________________________#
-afg_uae_can_batting_df = pd.DataFrame({'match_id':[3,3,3,3,3,4,4,4,4,3],
-                               'striker':['S Atal','I Zadran','R Gurbaz','M Nabi','A Omarzai','R Gurbaz','I Zadran','S Atal','A Omarzai','Waseem Muhammad'],
-                               'runs_off_bat':[16,53,0,3,40,30,90,44,13,10],
-                               'is_batter_ball':[14,41,2,3,21,20,56,32,7,6],
-                               'is_batter_dot':[np.nan,np.nan,np.nan,np.nan,np.nan,np.nan,np.nan,np.nan,np.nan,np.nan],
-                               'isfour':[1,6,0,0,2,5,7,2,0,2],
-                               'issix':[1,1,0,0,3,0,5,2,1,0]})
 
-afg_uae_can_bowling_df = pd.DataFrame({'match_id':[4,4,4,3,3,3],
-                               'bowler':['A Omarzai','Rashid Khan','M Nabi','A Omarzai','Rashid Khan','Noor Ahmad'],
-                               'is_bowler_runs':[18,19,7,15,24,35],
-                               'is_ball':[12,24,24,24,24,18],
-                               'is_bowl_out':[1,2,4,4,1,0],
-                               'isdot':[7,14,17,15,13,4],
-                               'is_maiden':[0,0,0,0,0,0]})
-
-#________________________#
     
-    batting_df = pd.concat([batting_df,afg_nz_batting_df,afg_uae_can_batting_df])
+    batting_df =
+pd.concat([batting_df,afg_nz_batting_df])
 
     #########################################
     #########################################
@@ -248,7 +232,7 @@ afg_uae_can_bowling_df = pd.DataFrame({'match_id':[4,4,4,3,3,3],
     
 
     print('-----------------------\n',afg_nz_bowling_df,'\n-------------------------')
-    bowling_df = pd.concat([bowling_df,afg_nz_bowling_df,afg_uae_can_bowling_df
+    bowling_df = pd.concat([bowling_df,afg_nz_bowling_df
 ])
     
     ####################################################
