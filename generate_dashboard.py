@@ -155,20 +155,20 @@ def fantasy_points(df,total_points_df_download=0,rank_df_download=0):
     #######################################
 
     afg_nz_batting_df = pd.DataFrame({'match_id':[1,1,1,1,1,1,1,1,1,1,1,1,
-                                                  2,2,2,2,2,2,2,2,2,2,2,2,2,2],
+                                                  2,2,2,2,2,2,2,2,2,2,2,2,2,2]+ [3,3,3,3,3,4,4,4,4,3],
                                'striker':['R Gurbaz','S Atal','I Zadran','M Nabi','A Omarzai','MS Chapman','TL Seifert','FA Allen','GD Phillips','DJ Mitchell','R Ravindra','MJ Santner',
                                           'R Gurbaz','S Atal','I Zadran','M Nabi','Rashid Khan','A Omarzai','Noor Ahmad',
-                                          'D Brevis','DA Miller','M Jansen','RD Rickelton','Q de Kock','AK Markram','T Stubbs'], #'R Gurbaz','S Atal','I Zadran','M Nabi','A Omarzai'
+                                          'D Brevis','DA Miller','M Jansen','RD Rickelton','Q de Kock','AK Markram','T Stubbs'] + ['S Atal','I Zadran','R Gurbaz','M Nabi','A Omarzai','R Gurbaz','I Zadran','S Atal','A Omarzai','Waseem Muhammad'], #'R Gurbaz','S Atal','I Zadran','M Nabi','A Omarzai'
                                'runs_off_bat':  [27,29,10,10,14,28,65,1,42,25,0,17,
-                                                 84,0,12,5,20,22,15,23,20,16,61,59,5,1],
+                                                 84,0,12,5,20,22,15,23,20,16,61,59,5,1] + [16,53,0,3,40,30,90,44,13,10],
                                'is_batter_ball':[22,24,12,7,7,17,42,2,25,14,1,8,
-                                                 42,3,10,6,12,17,9,19,15,7,28,41,8,2],
+                                                 42,3,10,6,12,17,9,19,15,7,28,41,8,2]+[14,41,2,3,21,20,56,32,7,6],
                                'is_batter_dot':[np.nan,np.nan,np.nan,np.nan,np.nan,np.nan,np.nan,np.nan,np.nan,np.nan,np.nan,np.nan,
-                                                np.nan,np.nan,np.nan,np.nan,np.nan,np.nan,np.nan,np.nan,np.nan,np.nan,np.nan,np.nan,np.nan,np.nan],
+                                                np.nan,np.nan,np.nan,np.nan,np.nan,np.nan,np.nan,np.nan,np.nan,np.nan,np.nan,np.nan,np.nan,np.nan,  np.nan,np.nan,np.nan,np.nan,np.nan,np.nan,np.nan,np.nan,np.nan,np.nan],
                                'isfour':[2,2,1,0,0,2,7,0,7,1,0,2,
-                                         4,0,1,0,3,3,0,1,1,2,5,5,1,0],
+                                         4,0,1,0,3,3,0,1,1,2,5,5,1,0] +[1,6,0,0,2,5,7,2,0,2],
                                'issix': [1,0,0,1,2,1,3,0,1,1,0,1,
-                                         7,0,1,0,0,0,2,1,1,1,4,3,0,0]})
+                                         7,0,1,0,0,0,2,1,1,1,4,3,0,0]+[1,1,0,0,3,0,5,2,1,0]})
     
     print("----------------\n",afg_nz_batting_df,"\n--------------")
 
@@ -215,19 +215,19 @@ def fantasy_points(df,total_points_df_download=0,rank_df_download=0):
     ####################################################
 
     afg_nz_bowling_df = pd.DataFrame({'match_id':[1,1,1,1,1,1,1,1,1,1,
-                                                  2,2,2,2,2,2,2,2,2,2],
+                                                  2,2,2,2,2,2,2,2,2,2] + [4,4,4,3,3,3],
                                'bowler':['MJ Henry','JA Duffy','LH Ferguson','GD Phillips','JDS Neesham','R Ravindra','MJ Santner','M Nabi','Rashid Khan','A Omarzai',
-                                         'L Ngidi','GF Linde','KA Maharaj','AK Markram','M Jansen','K Rabada','M Nabi','Rashid Khan','A Omarzai','Noor Ahmad'],
+                                         'L Ngidi','GF Linde','KA Maharaj','AK Markram','M Jansen','K Rabada','M Nabi','Rashid Khan','A Omarzai','Noor Ahmad'] + ['A Omarzai','Rashid Khan','M Nabi','A Omarzai','Rashid Khan','Noor Ahmad'],
                                'is_bowler_runs':[27,30,40,12,33,14,23,18,36,40,
-                                                 26,39,27,14,42,38,20,28,41,35],
+                                                 26,39,27,14,42,38,20,28,41,35]+[18,19,7,15,24,35],
                                'is_ball':[24,18,24,6,18,6,24,6,24,23,
-                                          24,18,24,6,24,22,12,24,21,18],
+                                          24,18,24,6,24,22,12,24,21,18]+[12,24,24,24,24,18],
                                'is_bowl_out':[1,1,2,0,0,1,0,1,1,1,
-                                              3,1,1,0,1,1,0,2,3,0],
+                                              3,1,1,0,1,1,0,2,3,0]+[1,2,4,4,1,0],
                                'isdot':[9,8,5,0,3,2,6,21,5,7,
-                                        13,4,7,0,8,8,1,9,6,4],
+                                        13,4,7,0,8,8,1,9,6,4]+[7,14,17,15,13,4],
                                'is_maiden':[0,0,0,0,0,0,0,0,0,0,
-                                            0,0,0,0,0,0,0,0,0,0]})
+                                            0,0,0,0,0,0,0,0,0,0]+ [0,0,0,0,0,0]})
     
 
     print('-----------------------\n',afg_nz_bowling_df,'\n-------------------------')
