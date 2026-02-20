@@ -76,7 +76,7 @@ the_og_xi = ['D Brevis','MS Chapman','WG Jacks','M Jansen','J Charles','AJ Hosei
 eleven_stars = ['BA King','LH Ferguson','Tilak Varma','R Powell','MP Stoinis','SE Rutherford','PD Salt','G Motie','R Shepherd','XC Bartlett','E Malinga','MW Forde','BJ McMullen','MRJ Watt','Shubham Ranjane'] #added 'ss ranjane'
 
 blazing_titans = ['HC Brook','K Rabada','Usman Tariq','GH Dockrell','MDK Perera', 'MDKJ Perera','TL Seifert','FA Allen','SO Hetmyer','Kuldeep Yadav','Arshdeep Singh','MR Marsh',
-                  'MJ Santner','DS Airee','SP Krishnamurthi','S Lamichhane'] # perera doubt
+                  'MJ Santner','DS Airee','SP Krishnamurthi','S Lamichhane','FH Allen'] # perera doubt
 
 attackers = ['BJ Dwarshuis','Agha Salman','DP Conway','Ishan Kishan','GD Phillips','DJ Mitchell','Sikandar Raza','Shadab Khan',"MP O'Dowd",'LV van Beek','Ali Khan','S Atal','R Gurbaz','A Omarzai'] #3 remainig
 
