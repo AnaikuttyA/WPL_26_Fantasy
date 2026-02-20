@@ -173,8 +173,7 @@ def fantasy_points(df,total_points_df_download=0,rank_df_download=0):
     print("----------------\n",afg_nz_batting_df,"\n--------------")
 
     
-    batting_df =
-pd.concat([batting_df,afg_nz_batting_df])
+    batting_df =pd.concat([batting_df,afg_nz_batting_df])
 
     #########################################
     #########################################
@@ -232,7 +231,7 @@ pd.concat([batting_df,afg_nz_batting_df])
     
 
     print('-----------------------\n',afg_nz_bowling_df,'\n-------------------------')
-    bowling_df = pd.concat([bowling_df,afg_nz_bowling_df
+    bowling_df =pd.concat([bowling_df,afg_nz_bowling_df
 ])
     
     ####################################################
