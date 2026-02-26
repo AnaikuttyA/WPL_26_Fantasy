@@ -160,7 +160,7 @@ def fantasy_points(df,total_points_df_download=0,rank_df_download=0):
                                           'R Gurbaz','S Atal','I Zadran','M Nabi','Rashid Khan','A Omarzai','Noor Ahmad',
                                           'D Brevis','DA Miller','M Jansen','RD Rickelton','Q de Kock','AK Markram','T Stubbs'] + ['S Atal','I Zadran','R Gurbaz','M Nabi','A Omarzai','R Gurbaz','I Zadran','S Atal','A Omarzai','Waseem Muhammad'], #'R Gurbaz','S Atal','I Zadran','M Nabi','A Omarzai'
                                'runs_off_bat':  [27,29,10,10,14,28,65,1,42,25,0,17,
-                                                 84,0,12,5,20,22,15,23,20,16,61,59,5,1] + [16,53,0,3,40,30,90,44,13,10],
+                                                 84,0,12,5,20,22,15,23,20,16,61,59,5,1] + [16,53,0,3,40,30,95,44,13,10],
                                'is_batter_ball':[22,24,12,7,7,17,42,2,25,14,1,8,
                                                  42,3,10,6,12,17,9,19,15,7,28,41,8,2]+[14,41,2,3,21,20,56,32,7,6],
                                'is_batter_dot':[np.nan,np.nan,np.nan,np.nan,np.nan,np.nan,np.nan,np.nan,np.nan,np.nan,np.nan,np.nan,
