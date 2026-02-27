@@ -62,7 +62,7 @@ df = df[(df['start_date'] >= pd.to_datetime(start_date))& (df['start_date'] <= p
 ######### Team List Starts ############
 xi_strikers = ['MT Renshaw','BM Duckett','SA Yadav','Saim Ayub','GF Linde','PHKD Mendis','JC Buttler','Mohammad Nawaz','JO Holder','Abrar Ahmed','MJ Henry','BFW de Leede','Harmeet Singh','Noor Ahmad'] #2 remaning
 
-thalasons = ['TM Head','RK Singh','MG Bracewell','PR Stirling','MD Shanaka','Sahibzada Farhan','AU Rashid','IS Sodhi','Abhishek Sharma','JA Duffy','JN Frylinck','Karan KC','JT Smuts','I Zadran']
+thalasons = ['TM Head','RK Singh','MG Bracewell','PR Stirling','MD Shanaka','Sahibzada Farhan','AU Rashid','IS Sodhi','Abhishek Sharma','JA Duffy','JN Frylinck','Karan KC','JT Smuts','I Zadran','MADI Hemantha','CE McConchie','PWH de Silva']
 
 super_knights = ['Shaheen Shah Afridi','JC Archer','C Green','JP Inglis','RD Rickelton','T Banton','Q de Kock','P Nissanka','Fakhar Zaman','Naseem Shah','AR Patel','R Ravindra',
                  'JJ Smit','AGS Gous','Waseem Muhammad']
